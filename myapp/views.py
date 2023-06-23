@@ -36,7 +36,16 @@ def clients(request):
     return render(request, 'myapp/clients.html', context=context)
 
 def login(request):
-    return HttpResponse('Page login')
+    title = 'Войти'
+    context = {'title': title, 'menu': menu}
+
+    if request.method == 'POST':
+        username = request.POST.get('usermame')
+        password = request.POST.get('password')
+        return HttpResponse(f'Login - {username}, Password - {password}')
+
+    if request.method == 'GET':
+        return render(request, 'myapp/login.html', context=context)
 
 def contacts(request, id):
     url_id = id
