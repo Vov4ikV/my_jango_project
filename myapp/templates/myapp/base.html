@@ -6,9 +6,11 @@
 </head>
 <body>
 {% block mainmenu %}
-<p>Первый пункт меню</p>
-<p>Второй пункт меню</p>
-<p>Третий пункт меню</p>
+<url>
+    {% for m in menu %}
+    <h2><li><a href="{% url m.url_name %}">{{m.title}}</a></li></h2>
+    {% endfor %}
+</url>
 {% endblock mainmenu %}
 
 {% block content %}

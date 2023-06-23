@@ -5,20 +5,35 @@ menu = [{'title': "О сайте", 'url_name': 'about'},
         {'title': "Машины парка", 'url_name': 'cars'},
         {'title': "Водители парка", 'url_name': 'drivers'},
         {'title': "Клиенты", 'url_name': 'clients'},
-
 ]
 def index(request):
     return HttpResponse('<h1>Main page</h1>')
 
 def index_myapp(request):
     title = 'Моя главная страница'
-    myname = 'Vladimir'
-    context = {'title': title, 'myname': myname}
+    context = {'title': title, 'menu': menu}
     return render(request, 'myapp/index.html', context=context)
 
 
 def about(request):
-    return HttpResponse('About')
+    title = 'О сайте'
+    context = {'title': title, 'menu': menu}
+    return render(request, 'myapp/about.html', context=context)
+
+def cars(request):
+    title = 'Машины'
+    context = {'title': title, 'menu': menu}
+    return render(request, 'myapp/cars.html', context=context)
+
+def drivers(request):
+    title = 'Водители'
+    context = {'title': title, 'menu': menu}
+    return render(request, 'myapp/drivers.html', context=context)
+
+def clients(request):
+    title = 'Клиенты'
+    context = {'title': title, 'menu': menu}
+    return render(request, 'myapp/clients.html', context=context)
 
 def login(request):
     return HttpResponse('Page login')
